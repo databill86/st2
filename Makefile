@@ -495,7 +495,7 @@ requirements: virtualenv .sdist-requirements install-runners
 	git submodule update --recursive --remote
 
 	# Verify there are no conflicting dependencies
-	$(VIRTUALENV_DIR)/bin/pipconflictchecker
+	$(VIRTUALENV_DIR)/bin/pip-compile <(cat st2*/requirements.txt contrib/runners/*/requirements.txt | sort -u)
 
 .PHONY: virtualenv
 	# Note: We always want to update virtualenv/bin/activate file to make sure
